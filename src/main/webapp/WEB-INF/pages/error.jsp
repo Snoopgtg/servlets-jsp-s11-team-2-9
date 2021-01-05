@@ -21,7 +21,6 @@
 <h2><strong><%=model.getMessage()%>
 </strong></h2>
 
-<br/>
 <p><%="url: " + model.getUrl()%>
 </p>
 
