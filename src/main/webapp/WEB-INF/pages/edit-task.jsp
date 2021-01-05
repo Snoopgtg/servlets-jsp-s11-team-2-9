@@ -13,6 +13,9 @@
 </head>
 <body>
 <%@include file="header.html" %>
+<br>
+<h2>Edit existing task</h2>
+
 <form action="/edit-task" method="post">
     <table>
         <% Task task = (Task) request.getAttribute("task"); %>
@@ -44,7 +47,7 @@
                         for (Priority priority : priorities) {
                     %>
                     <option <%= priority.name().equals(task.getPriority().name()) ? "selected" : "" %>
-                            value="<%=priority.name() %>"><%=priority.name() %>
+                            value="<%=priority.name() %>"><%=priority.priorityValue %>
                     </option>
                     <%
                         }
