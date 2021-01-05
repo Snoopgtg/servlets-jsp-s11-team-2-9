@@ -5,12 +5,13 @@
 <html>
 <head>
     <title>To-do list</title>
+
 </head>
 <body>
 <%@include file="header.html" %>
 <div align="left">
     <table border="1" cellpadding="5">
-        <caption><h2>List of Tasks</h2></caption>
+        <caption><h2 align="left">List of Tasks</h2></caption>
         <tr>
             <th>No.</th>
             <th>Name</th>
