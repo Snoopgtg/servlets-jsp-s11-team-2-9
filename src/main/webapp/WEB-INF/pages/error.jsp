@@ -14,6 +14,7 @@
     </title>
 </head>
 <body>
+<%@include file="header.html" %>
 
 <h2><strong><%=model.getMessage()%>
 </strong></h2>
