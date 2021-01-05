@@ -11,6 +11,8 @@
     <title>Read existing task</title>
 </head>
 <body>
+<%@include file="header.html" %>
+
 <table>
     <% Task task = (Task) request.getAttribute("task"); %>
 
