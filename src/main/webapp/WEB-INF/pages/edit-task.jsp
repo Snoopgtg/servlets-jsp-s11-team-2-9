@@ -1,4 +1,5 @@
-<%@ page import="com.softserve.itacademy.model.Task" %><%--
+<%@ page import="com.softserve.itacademy.model.Task" %>
+<%@ page import="com.softserve.itacademy.model.Priority" %><%--
   Created by IntelliJ IDEA.
   User: mark
   Date: 05/01/2021
@@ -15,6 +16,8 @@
 <form action="/edit-task" method="post">
     <table>
         <% Task task = (Task) request.getAttribute("task"); %>
+        <% Priority[] priorities = (Priority[]) request.getAttribute("priorities"); %>
+
         <tr>
             <td>
                 <label for="id">Id:</label>
@@ -36,8 +39,18 @@
         <tr>
             <td>Priority:</td>
             <td>
-                <strong><%= task.getPriority()%>
-                </strong>
+                <select id="priority" name="priority">
+                    <%
+                        for (Priority priority : priorities) {
+                    %>
+                    <option <%= priority.name().equals(task.getPriority().name()) ? "selected" : "" %>
+                            value="<%=priority.name() %>"><%=priority.name() %>
+                    </option>
+                    <%
+                        }
+                    %>
+
+                </select>
             </td>
         </tr>
 

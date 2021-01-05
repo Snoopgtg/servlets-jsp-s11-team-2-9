@@ -28,7 +28,6 @@ public class EditTaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         task = repository.read(id);
-        //todo share priorities
         RequestDispatcher requestDispatcher;
 
         if (task == null) {
@@ -42,12 +41,12 @@ public class EditTaskServlet extends HttpServlet {
         }
         requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/edit-task.jsp");
         request.setAttribute("task", task);
+        request.setAttribute("priorities", Priority.values());
         requestDispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //todo correct err with priority
         task.setPriority(Priority.valueOf(req.getParameter("priority")));
         task.setTitle(req.getParameter("title"));
         repository.update(task);
