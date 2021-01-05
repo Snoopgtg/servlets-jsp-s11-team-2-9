@@ -1,6 +1,6 @@
 <%@ page import="com.softserve.itacademy.model.Priority" %><%--
   Created by IntelliJ IDEA.
-  User: linux
+  User: Taras Gogol
   Date: 1/4/21
   Time: 7:21 PM
   To change this template use File | Settings | File Templates.

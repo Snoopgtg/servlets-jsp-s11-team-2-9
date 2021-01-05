@@ -34,7 +34,6 @@ public class CreateTaskServlet extends HttpServlet {
             request.setAttribute("defTitle", title);
         }
         request.getRequestDispatcher("/WEB-INF/pages/create-task.jsp").forward(request, response);
-       // response.sendRedirect("/create-task");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
