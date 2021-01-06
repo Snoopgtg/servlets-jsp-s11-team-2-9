@@ -1,8 +1,5 @@
 package com.softserve.itacademy.controller;
 
-import com.softserve.itacademy.model.ErrModel;
-import com.softserve.itacademy.model.Priority;
-import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +16,7 @@ public class ShowAllServlet extends HttpServlet{
     private TaskRepository repository;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         this.repository = TaskRepository.getTaskRepository();
     }
 

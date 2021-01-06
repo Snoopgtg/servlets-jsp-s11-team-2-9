@@ -1,14 +1,11 @@
-<%@ page import="com.softserve.itacademy.model.ErrModel" %>
-<%@ page import="com.softserve.itacademy.controller.ReadTaskServlet" %>
-<%@ page import="javax.servlet.annotation.WebServlet" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: mark
-  Date: 05/01/2021
-  Time: 00:41
-  To change this template use File | Settings | File Templates.
+  User: Taras Gogol
+  Date: 06/01/2021
+  Time: 00:12
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
-<%response.setStatus(404);%>
+<%response.setStatus(HttpServletResponse.SC_NOT_FOUND);%>
 <html>
 <head>
     <title>Page Not found
@@ -19,10 +16,8 @@
 
 <h2><strong>Task with ID '<%=request.getParameter("id")%>' not found in To-Do List!
 </strong></h2>
-<%
-    String value = ReadTaskServlet.class.getAnnotation(WebServlet.class).value()[0];
-%>
-<h4><%="url: " + value%>
+
+<h4>url: ${requestScope['javax.servlet.forward.request_uri']}
 </h4>
 
 </body>
