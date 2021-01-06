@@ -1,28 +1,24 @@
-<%@ page import="com.softserve.itacademy.model.ErrModel" %>
-<%@ page import="com.sun.net.httpserver.Headers" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: mark
-  Date: 05/01/2021
-  Time: 00:41
-  To change this template use File | Settings | File Templates.
+  User: Taras Gogol
+  Date: 06/01/2021
+  Time: 00:12
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
+<%response.setStatus(HttpServletResponse.SC_NOT_FOUND);%>
 <html>
 <head>
-    <% ErrModel model = (ErrModel) request.getAttribute("error"); %>
-
-    <title><%=model.getTitle() %>
+    <title>Page Not found
     </title>
 </head>
 <body>
 <%@include file="header.html" %>
 
-<h2><strong><%=model.getMessage()%>
+<h2><strong>Task with ID '<%=request.getParameter("id")%>' not found in To-Do List!
 </strong></h2>
 
-<p><%="url: " + model.getUrl()%>
-</p>
+<h4>url: ${requestScope['javax.servlet.forward.request_uri']}
+</h4>
 
 </body>
 </html>

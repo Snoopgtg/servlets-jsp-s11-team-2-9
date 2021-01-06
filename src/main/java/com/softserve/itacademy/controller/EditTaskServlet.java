@@ -1,6 +1,5 @@
 package com.softserve.itacademy.controller;
 
-import com.softserve.itacademy.model.ErrModel;
 import com.softserve.itacademy.model.Priority;
 import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
@@ -20,7 +19,7 @@ public class EditTaskServlet extends HttpServlet {
     private Task task;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         this.repository = TaskRepository.getTaskRepository();
     }
 
@@ -29,16 +28,6 @@ public class EditTaskServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         task = repository.read(id);
         RequestDispatcher requestDispatcher;
-
-        if (task == null) {
-            requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
-            request.setAttribute("error", new ErrModel("Task not found",
-                    "Task with id '" + id + "' not found in To-Do List!",
-                    "/edit-task"
-            ));
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            requestDispatcher.forward(request, response);
-        }
         requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/edit-task.jsp");
         request.setAttribute("task", task);
         request.setAttribute("priorities", Priority.values());
@@ -46,7 +35,7 @@ public class EditTaskServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         task.setPriority(Priority.valueOf(req.getParameter("priority")));
         task.setTitle(req.getParameter("title"));
         repository.update(task);

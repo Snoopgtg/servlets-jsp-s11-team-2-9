@@ -1,3 +1,9 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Taras Gogol
+  Date: 04/01/2021
+  Time: 16:18
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

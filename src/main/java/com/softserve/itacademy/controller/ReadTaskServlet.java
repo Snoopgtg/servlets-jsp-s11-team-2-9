@@ -1,6 +1,5 @@
 package com.softserve.itacademy.controller;
 
-import com.softserve.itacademy.model.ErrModel;
 import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
@@ -18,7 +17,7 @@ public class ReadTaskServlet extends HttpServlet {
     private TaskRepository repository;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         this.repository = TaskRepository.getTaskRepository();
     }
 
@@ -26,18 +25,12 @@ public class ReadTaskServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Task task = repository.read(id);
         RequestDispatcher requestDispatcher;
+        StringBuffer url = request.getRequestURL();
+        String addr = request.getRemoteAddr();
 
-        if (task == null) {
-            requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/error.jsp");
-            request.setAttribute("error", new ErrModel("Task not found",
-                    "Task with id '" + id + "' not found in To-Do List!",
-                    "/read-task"
-            ));
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            requestDispatcher.forward(request, response);
-        }
         requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/read-task.jsp");
         request.setAttribute("task", task);
         requestDispatcher.forward(request, response);
+
     }
 }
