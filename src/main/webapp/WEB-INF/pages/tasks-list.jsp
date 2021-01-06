@@ -20,13 +20,16 @@
 
         </tr>
         <%
-            for(Task task : (List<Task>)request.getAttribute("tasks")){
+            for (Task task : (List<Task>) request.getAttribute("tasks")) {
 
-            %>
+        %>
         <tr>
-            <td><%=task.getId()%></td>
-            <td><%=task.getTitle()%></td>
-            <td><%=task.getPriority()%></td>
+            <td><%=task.getId()%>
+            </td>
+            <td><%=task.getTitle()%>
+            </td>
+            <td><%=task.getPriority()%>
+            </td>
             <td>
                 <a href="/read-task?id=<%=task.getId()%>">Read</a>
                 <a href="/edit-task?id=<%=task.getId()%>">Edit</a>

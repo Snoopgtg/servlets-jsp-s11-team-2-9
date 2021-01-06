@@ -24,11 +24,7 @@ public class ReadTaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Task task = repository.read(id);
-        RequestDispatcher requestDispatcher;
-        StringBuffer url = request.getRequestURL();
-        String addr = request.getRemoteAddr();
-
-        requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/read-task.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/read-task.jsp");
         request.setAttribute("task", task);
         requestDispatcher.forward(request, response);
 

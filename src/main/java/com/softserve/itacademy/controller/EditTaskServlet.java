@@ -27,8 +27,7 @@ public class EditTaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         task = repository.read(id);
-        RequestDispatcher requestDispatcher;
-        requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/edit-task.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/edit-task.jsp");
         request.setAttribute("task", task);
         request.setAttribute("priorities", Priority.values());
         requestDispatcher.forward(request, response);
