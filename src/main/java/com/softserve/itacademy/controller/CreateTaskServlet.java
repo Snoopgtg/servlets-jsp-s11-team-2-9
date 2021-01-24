@@ -15,8 +15,6 @@ import java.io.IOException;
 public class CreateTaskServlet extends HttpServlet {
     private TaskRepository taskRepository;
 
-
-
     @Override
     public void init() {
         taskRepository = TaskRepository.getTaskRepository();
